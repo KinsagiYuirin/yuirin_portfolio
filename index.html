@@ -1,0 +1,147 @@
+﻿<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio | Kinsagi Yuirin</title>
+  <meta name="description" content="ผลงาน ประวัติ และช่องทางติดต่อของ ใส่ชื่อของคุณ" />
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="main.js"></script>
+</head>
+<body>
+  <a href="#content" class="sr-only">ข้ามไปยังเนื้อหา</a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="หลัก">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <span>Kinsagi Yuirin</span>
+        </div>
+        <div class="navlinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <button class="btn" id="themeToggle" type="button" aria-label="สลับธีม">🌓 <span class="hide-sm">Theme</span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="container">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <span class="pill">พร้อมโชว์ผลงานของฉัน ✨</span>
+        <h1 id="hero-title">Hi, I'm <strong>Kinsagi Yuirin</strong> — Game Programming <br> ที่ชอบลองสร้าง</h1>
+        <p>คำโปรยสั้น ๆ เกี่ยวกับตัวคุณ จุดเด่น ประสบการณ์ หรือสไตล์การทำงาน (2–3 บรรทัดพอ)</p>
+        <div class="space-6"></div>
+        <a class="btn" href="#projects">See my Project</a>
+        <a class="btn" href="#contact">Contact me</a>
+      </div>
+      <div class="hero-card">
+        <div class="hero-portrait"><img src="./image/00068-2641504597.png"></div>
+        <p class="muted" style="margin-top:10px">Tip: เปลี่ยนเป็นรูปจริงหรือภาพกราฟิกที่สื่อถึงตัวคุณ</p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 class="section-title" id="about-title">About</h2>
+      <p class="muted">แนะนำตัวเองแบบสั้น ๆ: ความเชี่ยวชาญ เทคโนโลยีที่ถนัด สิ่งที่กำลังสนใจ หรือเป้าหมายการทำงาน</p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title">Projects</h2>
+      <div class="grid projects">
+        <!-- Project Card 1 -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=800&auto=format&fit=crop" alt="ภาพตัวอย่างโปรเจกต์ 1" loading="lazy">
+          <h3>ชื่อโปรเจกต์ที่ 1</h3>
+          <p class="muted">อธิบายสั้น ๆ 1–2 บรรทัด ว่าโปรเจกต์นี้ทำอะไรและใช้เทคโนโลยีใดบ้าง</p>
+          <p>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JS</span>
+          </p>
+          <p>
+            <a href="#" aria-label="ดูเดโมโปรเจกต์ 1">เดโม</a> ·
+            <a href="#" aria-label="ดูซอร์สโค้ดโปรเจกต์ 1">โค้ด</a>
+          </p>
+        </article>
+        <!-- Project Card 2 -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop" alt="ภาพตัวอย่างโปรเจกต์ 2" loading="lazy">
+          <h3>ชื่อโปรเจกต์ที่ 2</h3>
+          <p class="muted">สรุปสั้น ๆ วัตถุประสงค์ บทบาทของคุณ และผลลัพธ์</p>
+          <p>
+            <span class="tag">React</span>
+            <span class="tag">API</span>
+          </p>
+          <p>
+            <a href="#">เดโม</a> · <a href="#">โค้ด</a>
+          </p>
+        </article>
+        <!-- Project Card 3 -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="ภาพตัวอย่างโปรเจกต์ 3" loading="lazy">
+          <h3>ชื่อโปรเจกต์ที่ 3</h3>
+          <p class="muted">สรุป Impact หรือเมตริกที่น่าภูมิใจถ้ามี เช่น ผู้ใช้กี่คน ลดเวลาได้กี่ %</p>
+          <p>
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+          </p>
+          <p>
+            <a href="#">เดโม</a> · <a href="#">โค้ด</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 class="section-title" id="skills-title">Skills</h2>
+      <div class="skills">
+        <span class="skill">Git & GitHub</span>
+        <span class="skill">Unity/C#</span>
+        <span class="skill">HTML5</span>
+        <span class="skill">CSS3</span>
+        <span class="skill">JavaScript</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">Contact</h2>
+      <p class="muted">ระบุอีเมลหรือโซเชียลที่สะดวก เช่น X, Instagram, GitHub</p>
+      <form name="contact" netlify>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="ชื่อของคุณ" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@email.com" required>
+        </div>
+        <div class="field full">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="อยากคุยเรื่องโปรเจกต์อะไรบ้าง?" required></textarea>
+        </div>
+        <button class="btn submit" type="submit">ส่งข้อความ</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="container">
+        <small>© <span id="y"></span> Kinsagi Yuirin · สร้างด้วย HTML/CSS/JS</small>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

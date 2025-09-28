@@ -1,0 +1,136 @@
+html {
+    scroll-behavior: smooth;  /* ทำให้การเลื่อนหน้าเป็นแบบ smooth */
+}
+
+:root{
+  --bg: #0b1020; /* dark */
+  --text: #e7e9ee;
+  --muted: #aab1c5;
+  --card: #121933;
+  --primary: #6ea8fe; /* accent */
+  --ring: #7cd4fd;
+}
+:root.light{
+  --bg:#f7f8fc; --text:#0f172a; --muted:#52607a; --card:#ffffff; --primary:#2563eb; --ring:#22c1fb;
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f7f8fc; --text:#0f172a; --muted:#52607a; --card:#ffffff; --primary:#2563eb; --ring:#22c1fb; }
+}
+
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans Thai", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+a{ color:var(--primary); text-decoration:none }
+a:focus-visible, button:focus-visible{ outline:2px solid var(--ring); outline-offset:3px; border-radius:8px }
+img{ max-width:100%; height:auto; display:block }
+
+/* Layout */
+.container{ width:min(1100px, 92%); margin-inline:auto }
+header{
+  position:sticky; top:0;
+  backdrop-filter: blur(8px);
+  background:color-mix(in oklab, var(--bg) 85%, transparent);
+  border-bottom:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  z-index:50
+}
+nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
+.brand{ display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px }
+.brand .logo{
+  width:34px; height:34px; border-radius:10px;
+  background:linear-gradient(135deg, var(--primary), var(--ring));
+  box-shadow:0 6px 20px color-mix(in oklab, var(--primary) 45%, transparent)
+}
+.navlinks{ display:flex; gap:18px; align-items:center }
+.navlinks a{ opacity:.9 }
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 14px;
+  border:1px solid color-mix(in oklab, var(--text) 14%, transparent);
+  border-radius:12px;
+  background:color-mix(in oklab, var(--card) 96%, transparent)
+}
+
+/* Hero */
+.hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap:30px; padding:64px 0 32px
+}
+.hero h1{ font-size: clamp(32px, 4vw, 48px); line-height:1.15; margin:0 0 10px }
+.hero p{ margin:8px 0 22px; color:var(--muted) }
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border-radius:999px;
+  background:color-mix(in oklab, var(--primary) 18%, transparent);
+  border:1px solid color-mix(in oklab, var(--primary) 40%, transparent);
+  font-size:14px
+}
+.hero-card{
+  background:var(--card);
+  border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  border-radius:18px; padding:18px
+}
+.hero-portrait img{
+  aspect-ratio: 1 / 1; border-radius:14px;
+  background:linear-gradient(135deg, color-mix(in oklab, var(--primary) 35%, transparent), color-mix(in oklab, var(--ring) 20%, transparent));
+  display:grid; place-items:center; color:#fff; font-weight:700
+}
+
+/* Sections */
+section [id] { 
+  padding:48px 0;
+  scroll-margin-top: var(--header-h);
+}
+.section-title{ font-size: clamp(22px, 2.8vw, 30px); margin:0 0 18px }
+.muted{ color:var(--muted) }
+.grid{ display:grid; gap:16px }
+.grid.projects{ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) }
+.card{
+  background:var(--card);
+  border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  border-radius:16px; padding:16px;
+  transition: transform .15s ease, box-shadow .15s ease
+}
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px color-mix(in oklab, var(--ring) 18%, transparent)
+}
+.tag{
+  display:inline-block; font-size:12px; padding:4px 8px; border-radius:999px;
+  background:color-mix(in oklab, var(--text) 12%, transparent); margin-right:6px
+}
+
+/* Skills */
+.skills{ display:flex; flex-wrap:wrap; gap:10px }
+.skill{ padding:8px 10px; border:1px dashed color-mix(in oklab, var(--text) 20%, transparent); border-radius:10px; font-size:14px }
+
+/* Contact */
+form{ display:grid; grid-template-columns:1fr 1fr; gap:12px }
+form .field{ display:grid }
+form .field.full{ grid-column:1 / -1 }
+input, textarea{
+  padding:12px 14px; border-radius:12px;
+  border:1px solid color-mix(in oklab, var(--text) 16%, transparent);
+  background:transparent; color:var(--text)
+}
+textarea{ min-height:120px; resize:vertical }
+.submit{ justify-self:start }
+
+footer{ padding:30px 0 50px; color:var(--muted); font-size:14px }
+
+/* Utilities */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0
+}
+.space-6{ height:6px }
+
+/* Responsive */
+@media (max-width: 900px){
+  .hero{ grid-template-columns:1fr }
+  form{ grid-template-columns:1fr }
+}
