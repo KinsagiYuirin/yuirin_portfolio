@@ -64,7 +64,7 @@
             align-items: flex-end;
             justify-content: space-between;
             padding: 80px 10% 0;
-            background: linear-gradient(160deg, #ffffff 0%, #daeeff 60%, #c8e4ff 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #daeeff 75%, #ffdae9 100%);
             min-height: 100vh; /* Fill the screen */
             position: sticky;
             top: 0;
@@ -196,10 +196,11 @@
         }
 
         footer {
-            background: #d4e9ff;
+            background: linear-gradient(180deg, #d4e9ff 0%, #ffdae9 100%);
             text-align: center;
             padding: 40px;
             font-size: 0.9rem;
+            border-radius: 40px 40px 0 0;
         }
     </style>
 </head>
@@ -222,7 +223,7 @@
             <span class="line-wrap"><span class="line-inner">WELCOME TO MY</span></span>
             <span class="line-wrap"><span class="line-inner">CREATIVE WORLD!</span></span>
         </h1>
-        <p class="hero-desc">Hi, I'm Kinsagi Yuirin, a digital artist &amp; illustrator passionate about character design, vibrant art, and storytelling. Let's create something magical together!</p>
+        <p class="hero-desc">Hi, I'm Kinsagi Yuirin, a software developer and novel writer. I’m passionate about building games and crafting immersive stories. Let's create something great together!</p>
         <div class="btn-group">
             <a href="#" class="btn btn-blue">VIEW PROJECTS</a>
             <a href="#" class="btn btn-pink">GET IN TOUCH</a>
@@ -247,22 +248,22 @@
             <div class="card">
                 <img src="image/00068-2641504597.png" class="card-img" alt="Programming Port">
                 <div class="card-content">
-                    <h3>Programming Port</h3>
-                    <p>Exclusive collection and fantasy illustration series.</p>
+                    <h3>Programming & Web Dev</h3>
+                    <p>A collection of my coding projects, <br>web development, and technical works.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/300x200/D4E9FF" class="card-img" alt="Work 2">
+                <img src="image/00068-2641504597.png" class="card-img" alt="Work 2">
                 <div class="card-content">
-                    <h3>Novel Writer Port</h3>
-                    <p>Explore celestial vibes and cute cafe aesthetic designs.</p>
+                    <h3>Novel Writer Portfolio</h3>
+                    <p>My original stories and creative writing pieces from the world of imagination.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/300x200/D4E9FF" class="card-img" alt="Work 3">
+                <img src="image/00068-2641504597.png" class="card-img" alt="Work 3">
                 <div class="card-content">
-                    <h3>Fantasy Characters</h3>
-                    <p>Fairy-style characters and illustration commissions.</p>
+                    <h3>Side Quests</h3>
+                    <p>Other creative activities and personal interests outside of coding and writing.</p>
                 </div>
             </div>
         </div>
@@ -314,6 +315,11 @@ const cardObserver = new IntersectionObserver((entries) => {        entries.forE
     });
 
     cards.forEach(card => cardObserver.observe(card));
+
+    // Prevent image dragging globally
+    document.querySelectorAll('img').forEach(img => {
+        img.ondragstart = () => false;
+    });
 
     // Observer for Section transitions (Indicator handling)
     const sectionObserver = new IntersectionObserver((entries) => {
