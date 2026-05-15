@@ -9,6 +9,7 @@ html {
   --card: #121933;
   --primary: #6ea8fe; /* accent */
   --ring: #7cd4fd;
+  --header-h: 70px;
 }
 :root.light{
   --bg:#f7f8fc; --text:#0f172a; --muted:#52607a; --card:#ffffff; --primary:#2563eb; --ring:#22c1fb;
@@ -81,7 +82,7 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:14
 }
 
 /* Sections */
-section [id] { 
+section[id] { 
   padding:48px 0;
   scroll-margin-top: var(--header-h);
 }

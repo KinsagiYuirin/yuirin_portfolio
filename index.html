@@ -1,147 +1,335 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio | Kinsagi Yuirin</title>
-  <meta name="description" content="ผลงาน ประวัติ และช่องทางติดต่อของ ใส่ชื่อของคุณ" />
-  <meta name="color-scheme" content="light dark">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinsagi Yuirin | Creative Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f7ff;
+            --primary-blue: #d4e9ff;
+            --accent-blue: #6c9bc0;
+            --text-dark: #4a5d73;
+            --white: #ffffff;
+            --button-pink: #ffb7c5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* Fixed so it doesn't break snap flow */
+            width: 80%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 20px;
+            z-index: 100;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: var(--accent-blue); }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-left: 20px;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent-blue); }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 80px 10% 0;
+            background: linear-gradient(160deg, #ffffff 0%, #daeeff 60%, #c8e4ff 100%);
+            min-height: 100vh; /* Fill the screen */
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* soft decorative circle behind character */
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: 6%;
+            bottom: 5%;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #bddeff 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 40px;
+            padding-bottom: 48vh;   /* lift text up higher */
+            position: relative;
+            z-index: 2;
+        }
+        .hero-text h1 { font-size: 3rem; color: var(--accent-blue); margin-bottom: 10px; }
+
+        .hero-image {
+            flex: 0 0 350px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            transform: translateY(-80px);
+            display: block;
+            mix-blend-mode: multiply;
+            filter: drop-shadow(0 -8px 24px rgba(108,155,192,0.18));
+        }
+
+        /* ============================================
+           OVERLAPPING PROJECTS SECTION
+           ============================================ */
+        .projects-wrapper {
+            position: relative;
+            z-index: 10; /* Higher than Hero */
+            background: var(--bg-color); /* Solid background to cover hero */
+            box-shadow: 0 -20px 40px rgba(0,0,0,0.05); /* Shadow on the top edge */
+            border-radius: 50px 50px 0 0;
+            padding-top: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* --- Grid Layout --- */
+        .container { padding: 0 10%; margin-bottom: 80px; }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- Project Card --- */
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        opacity 0.6s ease,
+                        border-color 0.3s;
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary-blue); }
+        .card-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
+        .card-content { padding: 20px; }
+        .card-content h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
+        .card-content p { font-size: 0.9rem; color: #777; line-height: 1.5; }
+
+        /* --- Intersection Class --- */
+        .card.card-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Scroll Indicators --- */
+        .scroll-indicator {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 105px; /* Moved up just a little bit more */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem; /* Slightly larger text */
+            color: var(--accent-blue);
+            font-weight: 600;
+            transition: opacity 0.5s ease;
+            z-index: 50; /* Ensure it's above everything */
+            pointer-events: none;
+        }
+        .arrow {
+            font-size: 2rem; /* Much larger arrow */
+            animation: bounce 2s infinite;
+            line-height: 0.5;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(15px);}
+            60% {transform: translateY(7px);}
+        }
+
+        footer {
+            background: #d4e9ff;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-  <a href="#content" class="sr-only">ข้ามไปยังเนื้อหา</a>
 
-  <header>
-    <div class="container">
-      <nav aria-label="หลัก">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
-          <span>Kinsagi Yuirin</span>
+<header>
+    <div class="logo">YUIRIN PORT</div>
+    <nav>
+        <a href="#">HOME</a>
+        <a href="#">ABOUT</a>
+        <a href="#">PROJECTS</a>
+        <a href="#">GALLERY</a>
+        <a href="#">CONTACT</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>
+            <span class="line-wrap"><span class="line-inner">WELCOME TO MY</span></span>
+            <span class="line-wrap"><span class="line-inner">CREATIVE WORLD!</span></span>
+        </h1>
+        <p class="hero-desc">Hi, I'm Kinsagi Yuirin, a digital artist &amp; illustrator passionate about character design, vibrant art, and storytelling. Let's create something magical together!</p>
+        <div class="btn-group">
+            <a href="#" class="btn btn-blue">VIEW PROJECTS</a>
+            <a href="#" class="btn btn-pink">GET IN TOUCH</a>
         </div>
-        <div class="navlinks">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-          <button class="btn" id="themeToggle" type="button" aria-label="สลับธีม">🌓 <span class="hide-sm">Theme</span></button>
-        </div>
-      </nav>
     </div>
-  </header>
+    <div class="hero-image">
+        <img src="image/LeftYuirinPort.png" alt="Kinsagi Yuirin Character">
+    </div>
 
-  <main id="content" class="container">
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <span class="pill">พร้อมโชว์ผลงานของฉัน ✨</span>
-        <h1 id="hero-title">Hi, I'm <strong>Kinsagi Yuirin</strong> — Game Programming <br> ที่ชอบลองสร้าง</h1>
-        <p>คำโปรยสั้น ๆ เกี่ยวกับตัวคุณ จุดเด่น ประสบการณ์ หรือสไตล์การทำงาน (2–3 บรรทัดพอ)</p>
-        <div class="space-6"></div>
-        <a class="btn" href="#projects">See my Project</a>
-        <a class="btn" href="#contact">Contact me</a>
-      </div>
-      <div class="hero-card">
-        <div class="hero-portrait"><img src="./image/00068-2641504597.png"></div>
-        <p class="muted" style="margin-top:10px">Tip: เปลี่ยนเป็นรูปจริงหรือภาพกราฟิกที่สื่อถึงตัวคุณ</p>
-      </div>
-    </section>
+    <!-- Scroll Down Indicator -->
+    <div class="scroll-indicator scroll-down" id="indicatorDown">
+        <span>Scroll Down</span>
+        <div class="arrow">↓</div>
+    </div>
+</section>
 
-    <!-- About -->
-    <section id="about" aria-labelledby="about-title">
-      <h2 class="section-title" id="about-title">About</h2>
-      <p class="muted">แนะนำตัวเองแบบสั้น ๆ: ความเชี่ยวชาญ เทคโนโลยีที่ถนัด สิ่งที่กำลังสนใจ หรือเป้าหมายการทำงาน</p>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 class="section-title" id="projects-title">Projects</h2>
-      <div class="grid projects">
-        <!-- Project Card 1 -->
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=800&auto=format&fit=crop" alt="ภาพตัวอย่างโปรเจกต์ 1" loading="lazy">
-          <h3>ชื่อโปรเจกต์ที่ 1</h3>
-          <p class="muted">อธิบายสั้น ๆ 1–2 บรรทัด ว่าโปรเจกต์นี้ทำอะไรและใช้เทคโนโลยีใดบ้าง</p>
-          <p>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JS</span>
-          </p>
-          <p>
-            <a href="#" aria-label="ดูเดโมโปรเจกต์ 1">เดโม</a> ·
-            <a href="#" aria-label="ดูซอร์สโค้ดโปรเจกต์ 1">โค้ด</a>
-          </p>
-        </article>
-        <!-- Project Card 2 -->
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop" alt="ภาพตัวอย่างโปรเจกต์ 2" loading="lazy">
-          <h3>ชื่อโปรเจกต์ที่ 2</h3>
-          <p class="muted">สรุปสั้น ๆ วัตถุประสงค์ บทบาทของคุณ และผลลัพธ์</p>
-          <p>
-            <span class="tag">React</span>
-            <span class="tag">API</span>
-          </p>
-          <p>
-            <a href="#">เดโม</a> · <a href="#">โค้ด</a>
-          </p>
-        </article>
-        <!-- Project Card 3 -->
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="ภาพตัวอย่างโปรเจกต์ 3" loading="lazy">
-          <h3>ชื่อโปรเจกต์ที่ 3</h3>
-          <p class="muted">สรุป Impact หรือเมตริกที่น่าภูมิใจถ้ามี เช่น ผู้ใช้กี่คน ลดเวลาได้กี่ %</p>
-          <p>
-            <span class="tag">Unity</span>
-            <span class="tag">C#</span>
-          </p>
-          <p>
-            <a href="#">เดโม</a> · <a href="#">โค้ด</a>
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" aria-labelledby="skills-title">
-      <h2 class="section-title" id="skills-title">Skills</h2>
-      <div class="skills">
-        <span class="skill">Git & GitHub</span>
-        <span class="skill">Unity/C#</span>
-        <span class="skill">HTML5</span>
-        <span class="skill">CSS3</span>
-        <span class="skill">JavaScript</span>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 class="section-title" id="contact-title">Contact</h2>
-      <p class="muted">ระบุอีเมลหรือโซเชียลที่สะดวก เช่น X, Instagram, GitHub</p>
-      <form name="contact" netlify>
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" placeholder="ชื่อของคุณ" required>
+<!-- Projects section slides up as user scrolls -->
+<div class="projects-wrapper" id="projectsWrapper">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid" id="projectGrid">
+            <div class="card">
+                <img src="image/00068-2641504597.png" class="card-img" alt="Programming Port">
+                <div class="card-content">
+                    <h3>Programming Port</h3>
+                    <p>Exclusive collection and fantasy illustration series.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200/D4E9FF" class="card-img" alt="Work 2">
+                <div class="card-content">
+                    <h3>Novel Writer Port</h3>
+                    <p>Explore celestial vibes and cute cafe aesthetic designs.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200/D4E9FF" class="card-img" alt="Work 3">
+                <div class="card-content">
+                    <h3>Fantasy Characters</h3>
+                    <p>Fairy-style characters and illustration commissions.</p>
+                </div>
+            </div>
         </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@email.com" required>
-        </div>
-        <div class="field full">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="อยากคุยเรื่องโปรเจกต์อะไรบ้าง?" required></textarea>
-        </div>
-        <button class="btn submit" type="submit">ส่งข้อความ</button>
-      </form>
-    </section>
-
+    </div>
     <footer>
-      <div class="container">
-        <small>© <span id="y"></span> Kinsagi Yuirin · สร้างด้วย HTML/CSS/JS</small>
-      </div>
+        <p>© 2026 Kinsagi Yuirin Port. All rights reserved.</p>
+        <div style="margin-top:10px">
+            <small>Home | About | Projects | Gallery | Contact</small>
+        </div>
     </footer>
-  </main>
+</div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const indicatorDown = document.getElementById('indicatorDown');
+const wrapper = document.getElementById('projectsWrapper');
+const hero = document.querySelector('.hero');
+
+// --- Parallax Fade Effect for Hero ---
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+
+    // Calculate progress (0 to 1) based on scroll position relative to hero height
+    // We want it to fade out completely by the time we reach the bottom of the hero
+    let progress = Math.min(scrollY / heroHeight, 1);
+
+    // Apply Opacity (1 to 0)
+    hero.style.opacity = 1 - progress;
+
+    // Apply Slide Up (0 to -100px)
+    hero.style.transform = `translateY(${-progress * 100}px)`;
+
+    // Optional: Scale down slightly for more depth
+    // hero.style.transform += ` scale(${1 - (progress * 0.05)})`;
+});
+
+// Observer for individual project cards
+const cardObserver = new IntersectionObserver((entries) => {        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('card-visible');
+            } else {
+                entry.target.classList.remove('card-visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    cards.forEach(card => cardObserver.observe(card));
+
+    // Observer for Section transitions (Indicator handling)
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                indicatorDown.style.opacity = '0';
+            } else {
+                indicatorDown.style.opacity = '1';
+            }
+        });
+    }, {
+        threshold: 0.05
+    });
+
+    sectionObserver.observe(wrapper);
+</script>
+
 </body>
 </html>
